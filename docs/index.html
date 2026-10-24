@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Con la misma experiencia, liderazgo usa más nube e infraestructura</title>
+  <meta name="description" content="Dashboard final: brecha de adopción de plataformas y herramientas entre liderazgo y desarrollo, controlando los años de experiencia. Stack Overflow Developer Survey 2024.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <!-- Generado con Tailwind desde tailwind/entrada.css: npm run build:css -->
+  <link rel="stylesheet" href="styles.css?v=fee435261e">
+</head>
+<body class="bg-gradient-to-b from-stone-50 to-stone-100 font-sans text-[15px] leading-normal text-tinta antialiased">
+  <main class="mx-auto max-w-[1180px] space-y-4 px-4 pb-12 pt-8">
+    <!-- Nivel 1: el hallazgo como titular -->
+    <header class="rounded-2xl bg-white px-6 py-7 shadow-sm ring-1 ring-stone-900/5 sm:px-8">
+      <p class="inline-flex rounded-full bg-stone-100 px-3 py-1 text-xs font-semibold tracking-wide text-stone-600 uppercase">
+        Evolución del stack tecnológico según experiencia y rol
+      </p>
+      <h1 class="mt-4 max-w-[26ch] text-3xl leading-tight font-extrabold tracking-tight text-balance sm:text-4xl lg:text-[2.6rem]">
+        Con la misma experiencia, quien lidera usa más nube e infraestructura que quien desarrolla
+      </h1>
+      <p class="mt-3 max-w-[72ch] text-stone-600" id="subtitulo">
+        Brecha de adopción entre liderazgo (Engineering manager, Senior Executive) y desarrollo, comparando solo
+        personas con los mismos años de experiencia profesional. Stack Overflow Developer Survey 2024.
+      </p>
+    </header>
+
+    <!-- Nivel 2: tres cifras -->
+    <section class="grid gap-4 md:grid-cols-[1.3fr_1fr_1fr]" id="kpis" aria-label="Indicadores principales"></section>
+
+    <!-- Nivel 3: gráfico principal -->
+    <section class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-900/5 sm:p-6" aria-labelledby="titulo-brechas">
+      <div class="mb-4 flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+        <div>
+          <h2 id="titulo-brechas" class="text-xl font-bold tracking-tight">Brecha liderazgo − desarrollo en cada rango de experiencia</h2>
+          <p class="mt-1 max-w-[80ch] text-sm text-stone-600">Cada punto es la diferencia en puntos porcentuales (% de liderazgo − % de desarrollo).
+            La barra vertical es el margen de error: si cruza el 0, la diferencia no es concluyente.</p>
+          <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-600">
+            <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-lider"></span>Arriba del 0: liderazgo usa más</span>
+            <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-dev"></span>Abajo del 0: desarrollo usa más</span>
+            <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-incierto"></span>No concluyente (la barra cruza el 0)</span>
+          </p>
+          <p class="mt-1 text-sm text-stone-500">Haz clic en una tecnología para ver su detalle.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3" aria-label="Filtros">
+          <fieldset>
+            <legend class="sr-only">Mostrar</legend>
+            <div class="inline-flex rounded-xl bg-stone-100 p-1 text-sm" id="filtro-pregunta">
+              <label class="relative cursor-pointer">
+                <input type="radio" name="grupo" value="tec" class="peer sr-only" checked>
+                <span class="block rounded-lg px-4 py-1.5 font-medium text-stone-600 transition peer-checked:bg-white peer-checked:text-tinta peer-checked:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-stone-400">Nube y herramientas</span>
+              </label>
+              <label class="relative cursor-pointer">
+                <input type="radio" name="grupo" value="lenguajes" class="peer sr-only">
+                <span class="block rounded-lg px-4 py-1.5 font-medium text-stone-600 transition peer-checked:bg-white peer-checked:text-tinta peer-checked:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-stone-400">Lenguajes</span>
+              </label>
+            </div>
+          </fieldset>
+          <label class="inline-flex cursor-pointer items-center gap-2.5 text-sm text-stone-600">
+            <input type="checkbox" id="filtro-global" class="peer sr-only">
+            <span class="relative h-5 w-9 shrink-0 rounded-full bg-stone-300 transition peer-checked:bg-stone-700 peer-focus-visible:ring-2 peer-focus-visible:ring-stone-400 after:absolute after:top-0.5 after:left-0.5 after:size-4 after:rounded-full after:bg-white after:shadow after:transition peer-checked:after:translate-x-4"></span>
+            Mostrar la brecha sin controlar experiencia
+          </label>
+        </div>
+      </div>
+      <!-- Títulos de eje compartidos por todos los paneles: se escriben una vez, no en cada panel -->
+      <div class="grid grid-cols-[auto_minmax(0,1fr)] gap-x-2">
+        <p class="flex items-center justify-center text-xs font-medium text-stone-500 [writing-mode:vertical-rl] rotate-180">
+          Diferencia en puntos porcentuales
+        </p>
+        <div class="grid gap-3.5" id="multiples" aria-live="polite">
+          <p class="text-stone-500">Cargando datos…</p>
+        </div>
+        <p class="col-start-2 mt-2 text-center text-xs font-medium text-stone-500">Años de experiencia profesional →</p>
+      </div>
+    </section>
+
+    <!-- Nivel 4: detalle bajo demanda -->
+    <section class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-900/5 sm:p-6" aria-labelledby="titulo-detalle">
+      <div class="mb-4 flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+        <div>
+          <h2 id="titulo-detalle" class="text-lg font-bold tracking-tight">Detalle</h2>
+          <p class="mt-1 max-w-[80ch] text-sm text-stone-600" id="nota-detalle"></p>
+          <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-600" aria-label="Leyenda">
+            <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-lider"></span>Liderazgo</span>
+            <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-dev"></span>Desarrollo</span>
+          </p>
+        </div>
+        <label class="flex w-full flex-col gap-1 sm:w-auto">
+          <span class="text-xs font-semibold tracking-wide text-stone-500 uppercase">Tecnología</span>
+          <select id="filtro-tecnologia" class="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm shadow-sm focus:ring-2 focus:ring-stone-400 focus:outline-none sm:min-w-60"></select>
+        </label>
+      </div>
+      <div id="detalle" class="[&_svg]:h-auto [&_svg]:max-w-full [&_svg]:overflow-visible"></div>
+    </section>
+
+    <footer class="rounded-2xl bg-white px-6 py-4 text-sm text-stone-600 shadow-sm ring-1 ring-stone-900/5">
+      <details class="group">
+        <summary class="font-semibold text-tinta marker:text-stone-400">Nota metodológica</summary>
+        <ul class="mt-3 list-disc space-y-1.5 pl-5">
+          <li><strong>Pregunta analítica:</strong> ¿cómo evoluciona el stack tecnológico y la demanda de herramientas a medida que un perfil avanza desde sus primeros años de experiencia (Entry-level) hasta alcanzar roles de liderazgo o dirección (Engineering manager y Senior Executive)?</li>
+          <li><strong>Demanda:</strong> se aproxima con el uso declarado por los profesionales (usó la tecnología en el
+            último año), no con lo que piden las vacantes.</li>
+          <li><strong>Segmentos</strong> según el rol principal (<code>DevType</code>): <em>Liderazgo</em> =
+            Engineering manager o Senior Executive (C-Suite, VP); <em>Desarrollo</em> = roles «Developer, …».</li>
+          <li><strong>Tecnologías:</strong> las 12 plataformas de nube y herramientas más usadas
+            (<code>PlatformHaveWorkedWith</code>, <code>ToolsTechHaveWorkedWith</code>) y los 10 lenguajes más usados
+            (<code>LanguageHaveWorkedWith</code>). Adopción = usó la tecnología en el último año. El denominador es quien
+            respondió esa pregunta. Los indicadores de arriba se calculan solo con plataformas y herramientas.</li>
+          <li><strong>Brecha:</strong> % de liderazgo − % de desarrollo dentro de cada rango de
+            <code>YearsCodePro</code>, con IC 95% de Newcombe (híbrido de Wilson). El detalle muestra el IC de Wilson
+            de cada segmento.</li>
+          <li><strong>Rangos omitidos:</strong> 0-2 años, porque solo hay 16 líderes en ese rango (mínimo exigido: 30).
+            En 3-5 años hay unos 90 líderes, así que los intervalos son amplios.</li>
+          <li><strong>Brecha sin controlar experiencia</strong> (línea punteada): la comparación directa de los dos
+            grupos, sin estratificar. Liderazgo tiene más años de experiencia que desarrollo, así que esta cifra mezcla
+            el efecto del rol con el de la experiencia.</li>
+          <li><strong>Amplitud:</strong> con la misma experiencia, liderazgo declara en promedio más tecnologías por
+            persona (unas 0.5 más por pregunta). Parte de cada brecha refleja esa amplitud; por eso importa que la
+            brecha se concentre en unas tecnologías y no en todas.</li>
+          <li><strong>Límites:</strong> la encuesta es de corte transversal y voluntaria; compara personas distintas en
+            cada rango, no trayectorias, y describe asociación, no causa.</li>
+        </ul>
+      </details>
+      <p class="mt-3 text-stone-500">
+        Gustavo Peralta Vázquez · Visualización de Datos, MPIA, Instituto Tecnológico de Aguascalientes ·
+        Fuente: Stack Overflow (2024), vía Kaggle (berkayalan, 2024) ·
+        Hecho con <a class="font-medium text-stone-700 underline underline-offset-2 hover:text-tinta" href="https://observablehq.com/plot/">Observable Plot</a> y
+        <a class="font-medium text-stone-700 underline underline-offset-2 hover:text-tinta" href="https://tailwindcss.com/">Tailwind CSS</a> ·
+        <a class="font-medium text-stone-700 underline underline-offset-2 hover:text-tinta" href="https://github.com/gussrw/stack-evolution">Código y datos</a>
+      </p>
+    </footer>
+  </main>
+  <script type="module" src="dashboard.js?v=fee435261e"></script>
+</body>
+</html>

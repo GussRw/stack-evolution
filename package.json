@@ -1,0 +1,14 @@
+{
+  "name": "stack-evolution",
+  "private": true,
+  "description": "Estilos del dashboard: Tailwind CSS compilado a docs/styles.css",
+  "scripts": {
+    "build:css": "tailwindcss -i tailwind/entrada.css -o docs/styles.css --minify && node scripts/versionar.mjs",
+    "watch:css": "tailwindcss -i tailwind/entrada.css -o docs/styles.css --watch",
+    "versionar": "node scripts/versionar.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}
